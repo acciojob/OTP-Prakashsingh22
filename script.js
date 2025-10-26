@@ -32,21 +32,10 @@
           } else {
             // If current input has a value, just clear it
             input.value = '';
-          }
+          } 
         }
       });
 
       // Optional: handle paste event for user convenience
-      input.addEventListener('paste', (e) => {
-        e.preventDefault();
-        const pasteData = e.clipboardData.getData('text').trim();
-        const digits = pasteData.split('').filter(ch => /\d/.test(ch));
-        digits.forEach((digit, i) => {
-          if (index + i < codes.length) {
-            codes[index + i].value = digit;
-          }
-        });
-        const nextIndex = Math.min(index + digits.length, codes.length - 1);
-        codes[nextIndex].focus();
-      });
+      
     });
