@@ -27,5 +27,5 @@ const inputs = document.querySelectorAll('.code');
             input.value = ''; // Just clear current field
           }
         }
-      });
     });
+});
