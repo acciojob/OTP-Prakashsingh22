@@ -15,11 +15,11 @@
 	flex-direction: column;
     justify-content: center;
     align-items: center;
-	width:400px;
-	margin-left:150px;
+	width:300px;
+	margin-left:20%;
 	border:2px solid #f9f9f9;
 	background-color: #f9f9f9;
-	font-size:15px
+	font-size:10px
 }
 body{
 	text-align:center;
@@ -42,6 +42,7 @@ body{
 
 #verification_subtext {
     color: #666;
+	font-size:10px;
     margin-bottom: 20px;
     text-align: center;
 }
