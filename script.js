@@ -23,7 +23,7 @@ const inputs = document.querySelectorAll('.code');
               inputs[index - 1].value = ''; // Clear previous input
               inputs[index - 1].focus();    // Move focus backward
             }
-          } else {
+         } else {
             input.value = ''; // Just clear current field
           }
         }
