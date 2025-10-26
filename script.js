@@ -1,18 +1,31 @@
 //your JS code here. If required.
-const codes = document.querySelectorAll('.code');
-codes[0].focus();
-codes.forEach((input, index) => {
+const inputs = document.querySelectorAll('.code');
+    inputs[0].focus();
+
+    inputs.forEach((input, index) => {
+      // Typing Forward
       input.addEventListener('input', (e) => {
         const value = e.target.value;
-        // Allow only one digit
         if (!/^[0-9]$/.test(value)) {
-          e.target.value = '';
+          e.target.value = ''; // Allow digits only
           return;
         }
-
-        // Move to the next input if available
-        if (index < codes.length - 1) {
-          codes[index + 1].focus();
+        if (index < inputs.length - 1) {
+          inputs[index + 1].focus();
         }
       });
-});
+
+      // Backspace Behavior
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace') {
+          if (input.value === '') {
+            if (index > 0) {
+              inputs[index - 1].value = ''; // Clear previous input
+              inputs[index - 1].focus();    // Move focus backward
+            }
+          } else {
+            input.value = ''; // Just clear current field
+          }
+        }
+      });
+    });
