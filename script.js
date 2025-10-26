@@ -1,44 +1,43 @@
 //your JS code here. If required.
-const inputs = document.querySelectorAll('.code');
+    // Select all input fields
+    const inputs = document.querySelectorAll(".code");
+
+    // Automatically focus the first input on page load
     inputs[0].focus();
 
+    // Add event listeners for typing and backspace
     inputs.forEach((input, index) => {
-      // Typing Forward
-      input.addEventListener('input', (e) => {
+      // Handle typing (move forward)
+      input.addEventListener("input", (e) => {
         const value = e.target.value;
+
+        // Only allow numeric input
         if (!/^[0-9]$/.test(value)) {
-          e.target.value = ''; // Allow digits only
+          e.target.value = "";
           return;
         }
+
+        // Move focus to next input field automatically
         if (index < inputs.length - 1) {
           inputs[index + 1].focus();
+        } else {
+          input.blur(); // optional: remove focus from last input
         }
       });
 
-      // Backspace Behavior
-      input.addEventListener('keydown', (e) => {
-        if (e.key === 'Backspace') {
-          if (input.value === '') {
+      // Handle backspace (move backward)
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace") {
+          // If current input is empty, move to previous input
+          if (input.value === "") {
             if (index > 0) {
-              inputs[index - 1].value = ''; // Clear previous input
-              inputs[index - 1].focus();    // Move focus backward
+              inputs[index - 1].focus();
+              inputs[index - 1].value = ""; // Clear previous input
             }
-         } else {
-            input.value = ''; // Just clear current field
+          } else {
+            // If not empty, just clear current input
+            input.value = "";
           }
-        }
+        } 
+      });
     });
-	// Optional: handle paste event for user convenience
-      input.addEventListener('paste', (e) => {
-        e.preventDefault();
-        const pasteData = e.clipboardData.getData('text').trim();
-        const digits = pasteData.split('').filter(ch => /\d/.test(ch));
-        digits.forEach((digit, i) => {
-          if (index + i < codes.length) {
-            codes[index + i].value = digit;
-          }
-        });
-        const nextIndex = Math.min(index + digits.length, codes.length - 1);
-        codes[nextIndex].focus();
-    });	
-});
