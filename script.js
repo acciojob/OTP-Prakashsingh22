@@ -1,43 +1,52 @@
-//your JS code here. If required.
-    // Select all input fields
-    const inputs = document.querySelectorAll(".code");
+    const codes = document.querySelectorAll('.code');
 
-    // Automatically focus the first input on page load
-    inputs[0].focus();
+    // Focus the first input automatically on page load
+    codes[0].focus();
 
-    // Add event listeners for typing and backspace
-    inputs.forEach((input, index) => {
-      // Handle typing (move forward)
-      input.addEventListener("input", (e) => {
+    codes.forEach((input, index) => {
+      input.addEventListener('input', (e) => {
         const value = e.target.value;
 
         // Only allow numeric input
         if (!/^[0-9]$/.test(value)) {
-          e.target.value = "";
+          e.target.value = '';
           return;
         }
 
-        // Move focus to next input field automatically
-        if (index <=inputs.length - 1) {
-          inputs[index + 1].focus();
+        // Move to next input if value is valid and not the last input
+        if (index <= codes.length - 1) {
+          codes[index + 1].focus();
         } else {
-          input.blur(); // optional: remove focus from last input
+          input.blur(); // optional: remove focus after last input
         }
       });
 
-      // Handle backspace (move backward)
-      input.addEventListener("keydown", (e) => {
-        if (e.key === "Backspace") {
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace') {
           // If current input is empty, move to previous input
-          if (input.value === "") {
+          if (input.value === '') {
             if (index > 0) {
-              inputs[index - 1].focus();
-              inputs[index - 1].value = ""; // Clear previous input
+              codes[index - 1].focus();
+              codes[index - 1].value = ''; // clear previous input
             }
           } else {
-            // If not empty, just clear current input
-            input.value = "";
+            // If current input has a value, just clear it
+            input.value = '';
           }
         }
+      });
+
+      // Optional: handle paste event for user convenience
+      input.addEventListener('paste', (e) => {
+        e.preventDefault();
+        const pasteData = e.clipboardData.getData('text').trim();
+        const digits = pasteData.split('').filter(ch => /\d/.test(ch));
+        digits.forEach((digit, i) => {
+          if (index + i < codes.length) {
+            codes[index + i].value = digit;
+          }
+        });
+        const nextIndex = Math.min(index + digits.length, codes.length - 1);
+        codes[nextIndex].focus();
       });
     });
