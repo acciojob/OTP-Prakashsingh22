@@ -25,7 +25,7 @@
         if (e.key === 'Backspace') {
           // If current input is empty, move to previous input
           if (input.value === '') {
-            if (index > 0) {
+            if (index >= 0) {
               codes[index - 1].focus();
               codes[index - 1].value = ''; // clear previous input
             }
