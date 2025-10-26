@@ -18,7 +18,7 @@
         }
 
         // Move focus to next input field automatically
-        if (index < inputs.length - 1) {
+        if (index <= inputs.length - 1) {
           inputs[index + 1].focus();
         } else {
           input.blur(); // optional: remove focus from last input
