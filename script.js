@@ -8,10 +8,10 @@
         const value = e.target.value;
 
         // Only allow numeric input
-        if (!/^[0-9]$/.test(value)) {
-          e.target.value = '';
-          return;
-        }
+        // if (!/^[0-9]$/.test(value)) {
+        //   e.target.value = '';
+        //   return;
+        // }
 
         // Move to next input if value is valid and not the last input
         if (index <= codes.length - 1) {
