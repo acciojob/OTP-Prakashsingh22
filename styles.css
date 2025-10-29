@@ -1,54 +1,78 @@
 body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f4f6f8;
+      background-color: #f1f3f6;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
       margin: 0;
     }
 
+    .container {
+      background: #fff;
+      padding: 40px 50px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 400px;
+      max-width: 90%;
+    }
+
     #verification_heading {
-      font-size: 28px;
+      font-size: 22px;
       font-weight: 600;
       margin-bottom: 10px;
-      color: #333;
+      color: #222;
     }
 
     #verification_subtext {
-      font-size: 15px;
-      color: #666;
+      font-size: 14px;
+      color: #555;
       margin-bottom: 30px;
-      text-align: center;
-      max-width: 350px;
     }
 
     .code-container {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
+      margin-bottom: 25px;
     }
 
     .code {
-      width: 50px;
+      width: 45px;
       height: 55px;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      font-size: 22px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
       text-align: center;
-      outline: none;
-      transition: border-color 0.2s, transform 0.1s;
+      font-size: 22px;
+      font-weight: 500;
+      background-color: #fafafa;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     .code:focus {
+      outline: none;
       border-color: #4a90e2;
-      transform: scale(1.05);
+      box-shadow: 0 0 4px rgba(74, 144, 226, 0.5);
+      background-color: #fff;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #888;
+      background: #f6f6f6;
+      padding: 8px 12px;
+      border-radius: 5px;
+      display: inline-block;
     }
 
     @media (max-width: 480px) {
       .code {
-        width: 40px;
-        height: 50px;
+        width: 38px;
+        height: 48px;
+        font-size: 20px;
+      }
+      .container {
+        padding: 30px 20px;
       }
     }
