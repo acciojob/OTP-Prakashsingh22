@@ -1,5 +1,5 @@
 const codes = document.querySelectorAll('.code');
-//codes[0].focus(); // focus first field on load
+codes[0].focus(); // focus first field on load 
 
 codes.forEach((input, idx) => {
 	input.addEventListener('input', (e) => {
